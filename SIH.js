@@ -92,18 +92,22 @@ class SIH {
 		}
 		var self = this;
 		this.helplist.appendTo('body')
-		this.helplist.offset({
-			top: this.elem.offset().top + this.elem.height() + 5,
-			left: this.elem.offset().left
-		});
+		var height = parseFloat(this.elem.css('height')) + parseFloat(this.elem.css('padding-bottom')) + parseFloat(this.elem.css('border-bottom-width'));
+
 		var width = parseFloat(this.elem.css('width')) + parseFloat(this.elem.css('padding-left')) + parseFloat(this.elem.css('padding-right')) + parseFloat(this.elem.css('border-right-width')) + parseFloat(this.elem.css('border-left-width')) - 5;
 		this.style = {
 			width: width + 'px',
 			collor: this.elem.css('collor'),
 			font: this.elem.css('font'),
+			position:'absolute',
+			display:'none',
 		}
 		this.helplist.css(this.style)
 		this.helplist.addClass('datalist')
+		this.helplist.offset({
+			top: this.elem.offset().top + height,
+			left: this.elem.offset().left
+		});
 		this.helplist.fadeIn(100)
 		this.helplist.find('li').on('click', function () {
 			self.elem.val($(this).attr('data-value'));
