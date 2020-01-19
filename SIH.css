@@ -14,5 +14,5 @@
 }
 .datalist li:hover{
 	box-shadow:none;
-	padding-left: 10px;
+	transform: translate(10px)
 }
