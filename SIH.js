@@ -63,9 +63,9 @@ class SIH {
 						case 'object':
 							switch (element.constructor.name) {
 								case 'date':
-									
+
 									break;
-							
+
 								default:
 									break;
 							}
@@ -99,8 +99,8 @@ class SIH {
 			width: width + 'px',
 			collor: this.elem.css('collor'),
 			font: this.elem.css('font'),
-			position:'absolute',
-			display:'none',
+			position: 'absolute',
+			display: 'none',
 		}
 		this.helplist.css(this.style)
 		this.helplist.addClass('datalist')
@@ -117,8 +117,8 @@ class SIH {
 		if (this.elem.length == 0) {
 			return false
 		}
-		this.helplist.fadeOut(100)
 		setTimeout(() => {
+			this.helplist.fadeOut(100)
 			this.helplist.remove()
 			this.helplist = null
 		}, 200);
