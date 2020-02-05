@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 class SIH {
 
 	constructor(selector = '', datalist = {}, hotUpdate = false) {
@@ -6,31 +7,31 @@ class SIH {
 		this.elem = $(selector);
 		this.hotUpdate = hotUpdate
 		if (this.elem.length == 0) {
-			return false
+			return false;
 		}
 		if (this.elem.length > 1) {
 			console.warn('Input задан неоднозначно ' + selector)
-			return false
+			return false;
 		}
 		var self = this;
 		this.ini()
 		this.elem.on('focus', function () {
-			self.show()
+			self.show();
 		})
 		this.elem.on('blur', function () {
-			self.hide()
+			self.hide();
 		})
 		if (this.hotUpdate) {
 			this.elem.on('input', function () {
-				self.ini()
-			})
+				self.ini();
+			});
 		}
 
 	}
 
 	ini() {
 		if (this.elem.length == 0) {
-			return false
+			return false;
 		}
 		var helplist = $('<div>');
 		var type = Array.isArray(this.datalist)
@@ -45,9 +46,9 @@ class SIH {
 							var tv = element.split(":");
 							if (tv.length == 2) {
 								element = tv['1'];
-								li.text(tv[0])
+								li.text(tv[0]);
 							} else {
-								li.text(element)
+								li.text(element);
 							}
 							break;
 						case 'date':
@@ -76,8 +77,8 @@ class SIH {
 							break;
 					}
 				}
-				li.attr('data-value', element)
-				li.appendTo(helplist)
+				li.attr('data-value', element);
+				li.appendTo(helplist);
 
 			}
 		}
@@ -85,7 +86,7 @@ class SIH {
 	}
 	show() {
 		if (this.elem.length == 0) {
-			return false
+			return false;
 		}
 		if (!this.helplist) {
 			this.ini()
@@ -102,8 +103,8 @@ class SIH {
 			position: 'absolute',
 			display: 'none',
 		}
-		this.helplist.css(this.style)
-		this.helplist.addClass('datalist')
+		this.helplist.css(this.style);
+		this.helplist.addClass('datalist');
 		this.helplist.offset({
 			top: this.elem.offset().top + height,
 			left: this.elem.offset().left
@@ -115,12 +116,12 @@ class SIH {
 	}
 	hide() {
 		if (this.elem.length == 0) {
-			return false
+			return false;
 		}
 		setTimeout(() => {
-			this.helplist.fadeOut(100)
-			this.helplist.remove()
-			this.helplist = null
+			this.helplist.fadeOut(100);
+			this.helplist.remove();
+			this.helplist = null;
 		}, 200);
 	}
 }
