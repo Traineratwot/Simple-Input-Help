@@ -18,9 +18,9 @@ class SIH {
 		this.elem.on('focus', function () {
 			self.show();
 		})
-		this.elem.on('blur', function () {
-			self.hide();
-		})
+		// this.elem.on('blur', function () {
+		// 	self.hide();
+		// })
 		if (this.hotUpdate) {
 			this.elem.on('input', function () {
 				self.ini();
@@ -63,8 +63,8 @@ class SIH {
 					switch (typeof element) {
 						case 'object':
 							switch (element.constructor.name) {
-								case 'date':
-
+								case 'Date':
+									li.text(element);
 									break;
 
 								default:
